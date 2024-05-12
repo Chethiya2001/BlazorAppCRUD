@@ -1,5 +1,7 @@
 using BlazorAppCRUD.Client.Pages;
 using BlazorAppCRUD.Components;
+using BlazorAppCRUD.Data;
+using BlazorAppCRUD.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+builder.Services.AddDbContext<DataContext>();  
+builder.Services.AddScoped<IGameService, GameService>();
+
 
 var app = builder.Build();
 
